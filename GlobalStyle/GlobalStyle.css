@@ -22,6 +22,7 @@
   --extra-small-txt: #414141;
   --txt-color-card: #575252;
   --dashboard-color: #9d9a9a;
+  --line-input-color: #d9d9d9;
 }
 
 body {
@@ -51,4 +52,54 @@ html {
 footer {
   background-color: var(--banner-color);
   height: 150px;
+}
+
+/* =========================MODAL=============================== */
+.containerLoading {
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(13.5px);
+  -webkit-backdrop-filter: blur(13.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.containerLoading button {
+  background-color: var(--banner-color);
+  padding: 1rem;
+  border-radius: 5px;
+  margin-top: 30px;
+  border: none;
+  color: white;
+  margin-bottom: 15px;
+}
+
+.loading {
+  border: 16px solid rgb(219, 219, 219);
+  width: 120px;
+  height: 120px;
+  border-top: 16px solid var(--banner-color);
+  border-radius: 50%;
+  animation: spin 2s linear infinite;
+  text-align: center;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

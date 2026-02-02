@@ -1,0 +1,96 @@
+.box-form {
+  width: 80%;
+  margin-inline: auto;
+  margin-top: 90px;
+  text-align: center;
+}
+
+.box-form .title-section {
+  font-size: 2.4rem;
+  margin-bottom: 110px;
+}
+
+.box-form form {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin-inline: auto;
+  max-width: 80%;
+}
+
+.box-form form input {
+  margin-bottom: 60px;
+  padding: 1.5rem;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--line-input-color);
+}
+
+.box-form form input::placeholder {
+  color: var(--sm-txt-color);
+  font-weight: 500;
+}
+
+.box-form form .btn-form-action {
+  display: flex;
+  width: 50%;
+  gap: 22px;
+}
+
+.box-form form .btn-form-action button {
+  width: 50%;
+  padding: 1rem;
+  border: none;
+  border-radius: 5px;
+  color: white;
+}
+
+.box-form form .btn-form-action .register {
+  background-color: var(--banner-color);
+}
+.box-form form .btn-form-action .cancel {
+  background-color: red;
+}
+
+@media (max-width: 700px) {
+  .box-form {
+    width: 80%;
+    margin-inline: auto;
+    margin-top: 60px;
+    text-align: center;
+  }
+  .box-form .title-section {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+
+  .box-form form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-inline: auto;
+    max-width: 100%;
+  }
+
+  .box-form form input {
+    margin-bottom: 10px;
+    padding: 1.5rem;
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--line-input-color);
+  }
+
+  .box-form form .btn-form-action {
+    flex-direction: column;
+    width: 100%;
+    gap: 22px;
+  }
+
+  .box-form form .btn-form-action button {
+    width: 100%;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 5px;
+    color: white;
+  }
+}

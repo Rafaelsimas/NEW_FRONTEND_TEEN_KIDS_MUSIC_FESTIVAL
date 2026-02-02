@@ -3,9 +3,13 @@ import logoMainBanner from "../../assets/img/logoBanner.png"
 import youtube from "../../assets/icons/yt.png"
 import facebook from "../../assets/icons/fb.png"
 import instagram from "../../assets/icons/ig.png"
+import { Link } from "react-router-dom"
 import "./style.css"
 import Menu from "../Menu/Menu"
 export default function Banner() {
+  const goYouTube = () => {
+    window.location.href = "https://www.youtube.com/@teenkidsmusicfestivalro"
+  }
   return (
     <div className="banner">
       <Menu />
@@ -19,9 +23,11 @@ export default function Banner() {
 
           <div className="btn-box">
             <button className="btn-home-action btn-inscricao">
-              INSCREVA-SE
+              <Link to="/inscrição">INSCREVA-SE</Link>
             </button>
-            <button className="btn-home-action yt">Acesse nosso canal</button>
+            <button onClick={goYouTube} className="btn-home-action yt">
+              Acesse nosso canal
+            </button>
           </div>
 
           <p>@2026 Teen 1kids 1music - Todos os direitos reservados</p>

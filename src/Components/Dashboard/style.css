@@ -56,6 +56,10 @@
   color: white;
 }
 
+.options-festival li strong {
+  color: rgb(5, 44, 42);
+}
+
 .options-festival li:nth-child(odd) {
   background-color: var(--banner-color);
 }
