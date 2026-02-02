@@ -91,9 +91,11 @@ export default function TresRiosForm() {
 function Modal(props) {
   const sendMsgWhatsapp = () => {
     const phone = 5521996119461
-    const msgUser = `Olá, eu me chamo ${props.fullName} \n 
-    e me inscrevi pelo site do TEEN KIDS MUSIC FESTIVAL.\n 
-    Eu gostaria de realizar o pagamento da inscriçaõ\n`
+    const msgUser = `\n⚠️Olá, eu me chamo:⚠️\n
+  -${props.fullName}🎙️\n 
+  -Eu me inscrevi pelo site:\n 
+  -TEEN KIDS MUSIC FESTIVAL\n 
+  -E eu gostaria de realizar o pagamento da inscriçaõ\n`
 
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(msgUser)}`
     window.open(url, "_blank")
