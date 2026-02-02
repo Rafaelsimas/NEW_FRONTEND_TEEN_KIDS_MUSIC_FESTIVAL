@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+}
+
+/* =======================GLOBAIS=================== */
+
+:root {
+  --btn-yellow-color: #ffe100;
+  --btn-white: #ffffff;
+  --xl-txt-color: #6c6c6c;
+  --md-txt-color: #585555;
+  --sm-txt-color: #707070;
+  --contrast-color-txt: #323232;
+  --btn-cronograma: #033c35;
+  --card-color: #efefef;
+  --banner-color: #1e9d9d;
+  --extra-small-txt: #414141;
+  --txt-color-card: #575252;
+}
+
+body {
+  color: rgb(0, 0, 0);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.title-section {
+  font-size: 3rem;
+  color: var(--xl-txt-color);
+  font-weight: bold;
+}
+
+.subtitle-section {
+  font-size: 1rem;
+  color: var(--md-txt-color);
+}
+
+.display-hidden {
+  display: none;
+}
+
+/* ===========================FOOTER=========================== */
+footer {
+  background-color: var(--banner-color);
+  height: 150px;
+}

@@ -1,0 +1,48 @@
+/* =============================PARTNER========================= */
+#partner {
+  width: 80%;
+  margin-inline: auto;
+  padding-top: 110px;
+  height: 100vh;
+}
+
+#partner .title-section {
+  font-size: 2.4rem;
+  text-align: center;
+}
+
+#partner .partnerLogo {
+  width: 80%;
+  margin-top: 110px;
+
+  flex-wrap: wrap;
+  display: flex;
+  gap: 32px;
+  margin-inline: auto;
+}
+
+#partner .partnerLogo img {
+  width: 9rem;
+}
+
+@media (max-width: 700px) {
+  #partner {
+    margin-top: 510px;
+    height: 100vh;
+    width: 100%;
+  }
+
+  #partner .title-section {
+    font-size: 1.2rem;
+  }
+
+  #partner .partnerLogo {
+    width: 95%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  #partner .partnerLogo li img {
+    width: 135px;
+  }
+}

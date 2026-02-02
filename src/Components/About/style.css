@@ -1,0 +1,86 @@
+/* ===========================SOBRE==================================== */
+#about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  width: 80%;
+  margin-inline: auto;
+}
+
+#about p {
+  font-size: 1.1rem;
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+
+/* ==============================CRONOGRAMA=========================== */
+.cronograma {
+  background-color: var(--banner-color);
+  padding: 2rem;
+  height: 234px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cronograma .text-conograma {
+  color: white;
+  font-size: 2.2rem;
+  font-weight: bold;
+}
+
+.cronograma .text-detail {
+  color: var(--extra-small-txt);
+  font-size: 1.4rem;
+}
+
+.cronograma button {
+  font-size: 1.4rem;
+  font-weight: bold;
+  border: none;
+  background: var(--btn-cronograma);
+  padding: 1rem;
+  color: white;
+  border-radius: 10px;
+}
+
+@media (max-width: 700px) {
+  #about {
+    /*   height: 100vh; */
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  #about .title-section {
+    font-size: 2.2rem;
+  }
+
+  #about p {
+    overflow: auto;
+  }
+  .cronograma {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 221px;
+    margin-bottom: 90px;
+    margin-top: 81px;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .cronograma .text-conograma {
+    font-size: 0.8rem;
+  }
+
+  .cronograma .text-detail {
+    font-size: 0.8rem;
+  }
+
+  .cronograma button {
+    font-size: 0.8rem;
+  }
+}

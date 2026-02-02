@@ -1,0 +1,86 @@
+/* =============================LAST CHAMPION========================= */
+#lastChampion {
+  width: 80%;
+  margin-inline: auto;
+  height: 100vh;
+}
+
+#lastChampion .box-details {
+  padding-top: 110px;
+
+  display: flex;
+  justify-content: space-between;
+}
+#lastChampion .box-details li {
+  background-color: var(--card-color);
+  width: 25.8rem;
+  border-radius: 10px;
+  padding: 1.5rem;
+  color: var(--txt-color-card);
+}
+
+#lastChampion .title-section {
+  margin-top: 110px;
+  font-size: 2.4rem;
+}
+
+#lastChampion .subtitle-section {
+  font-size: 1.2rem;
+}
+
+#lastChampion .data-images-champions {
+  padding-top: 3rem;
+  display: flex;
+  gap: 12px;
+}
+#lastChampion .data-images-champions li {
+  display: inline-block;
+  padding: 5px;
+  background: linear-gradient(
+    45deg,
+    var(--banner-color),
+    var(--btn-cronograma)
+  );
+  border-radius: 12px;
+}
+
+#lastChampion .data-images-champions img {
+  display: block;
+  border-radius: 8px;
+}
+
+@media (max-width: 700px) {
+  #lastChampion {
+    height: 70vh;
+    width: 90%;
+  }
+
+  #lastChampion .box-details {
+    flex-direction: column;
+
+    width: 100%;
+  }
+
+  #lastChampion .box-details li {
+    width: 100%;
+  }
+
+  #lastChampion .box-details li img {
+    width: 22px;
+  }
+
+  #lastChampion .title-section {
+    font-size: 1.2rem;
+  }
+
+  #lastChampion .data-images-champions {
+    width: 90%;
+    overflow: auto;
+  }
+
+  #lastChampion .data-images-champions li img {
+    width: 206px;
+    height: 287px;
+    object-fit: cover;
+  }
+}
