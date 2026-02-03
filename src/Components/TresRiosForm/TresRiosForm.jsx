@@ -40,7 +40,7 @@ export default function RioDasOstrasForm() {
   }
   return (
     <div className="box-form">
-      <div className="title-section">EDIÇÃO Rio das Ostras</div>
+      <div className="title-section">EDIÇÃO Três Rios</div>
       {openModal === 0 ? (
         <form>
           <input
