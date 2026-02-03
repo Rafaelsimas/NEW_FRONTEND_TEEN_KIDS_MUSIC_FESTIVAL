@@ -92,7 +92,7 @@ export default function RioDasOstrasForm() {
 
 function Modal(props) {
   const sendMsgWhatsapp = () => {
-    const phone = 5521996119461
+    const phone = 5522992168804
     const msgUser = `\n⚠️Olá, eu me chamo:⚠️\n
   -${props.fullName}🎙️\n 
   -Eu me inscrevi pelo site:\n 
