@@ -1,5 +1,6 @@
 /* ================IMAGES CHAMPIONS===================== */
 import champion1 from "../../assets/img/champion1.png"
+import champion2 from "../../assets/img/champion2.png"
 /* ================IMAGES CARD===================== */
 import arrow from "../../assets/icons/arrow.png"
 import star from "../../assets/icons/star.png"
@@ -38,7 +39,7 @@ export default function LastChampion() {
           <img src={champion1} alt="" />
         </li>
         <li>
-          <img src={champion1} alt="" />
+          <img src={champion2} alt="" />
         </li>
         <li>
           <img src={champion1} alt="" />
