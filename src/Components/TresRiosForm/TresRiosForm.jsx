@@ -111,7 +111,9 @@ function Modal(props) {
         Você está a um passo de concluir sua inscrição
       </p>
 
-      <button onClick={sendMsgWhatsapp}>Realizar pagamento da inscrição</button>
+      <button onClick={sendMsgWhatsapp}>
+        Click aqui para finalizar sua inscrição
+      </button>
       <p>Valor R$50,00</p>
     </div>
   )
