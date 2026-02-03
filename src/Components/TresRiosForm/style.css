@@ -1,7 +1,7 @@
 .box-form {
   width: 80%;
   margin-inline: auto;
-  margin-top: 90px;
+  margin-top: 40px;
   text-align: center;
 }
 
@@ -19,7 +19,7 @@
 }
 
 .box-form form input {
-  margin-bottom: 60px;
+  margin-bottom: 30px;
   padding: 1.5rem;
   background: none;
   border: none;
@@ -33,8 +33,9 @@
 
 .box-form form .btn-form-action {
   display: flex;
-  width: 50%;
+  width: 80%;
   gap: 22px;
+  align-items: center;
 }
 
 .box-form form .btn-form-action button {

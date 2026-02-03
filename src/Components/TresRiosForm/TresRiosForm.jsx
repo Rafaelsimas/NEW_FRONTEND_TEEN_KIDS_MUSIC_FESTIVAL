@@ -78,7 +78,9 @@ export default function TresRiosForm() {
             <button onClick={cancelRegister} className="cancel">
               CANCELAR
             </button>
-            <Link to="/inscrição">Voltar</Link>
+            <button>
+              <Link to="/inscrição">Voltar</Link>
+            </button>
           </div>
         </form>
       ) : (
@@ -90,12 +92,14 @@ export default function TresRiosForm() {
 
 function Modal(props) {
   const sendMsgWhatsapp = () => {
-    const phone = 5522992168804
+    const phone = 5521996119461
     const msgUser = `\n⚠️Olá, eu me chamo:⚠️\n
   -${props.fullName}🎙️\n 
   -Eu me inscrevi pelo site:\n 
   -TEEN KIDS MUSIC FESTIVAL\n 
-  -E eu gostaria de realizar o pagamento da inscrição\n`
+  -E eu gostaria de realizar o pagamento da inscrição\n
+  -para a edição TRÊS RIOS!\n
+  `
 
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(msgUser)}`
     window.open(url, "_blank")

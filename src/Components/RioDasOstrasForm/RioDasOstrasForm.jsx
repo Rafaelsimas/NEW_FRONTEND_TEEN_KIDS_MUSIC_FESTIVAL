@@ -7,6 +7,7 @@ export default function RioDasOstrasForm() {
   const [tel, setTel] = useState("")
   const [address, setAddress] = useState("")
   const [age, setAge] = useState("")
+  const [openModal, setOpenModal] = useState(0)
 
   const cancelRegister = () => {
     setFullName("")
@@ -17,8 +18,10 @@ export default function RioDasOstrasForm() {
   }
   const handleSubmit = (e) => {
     e.preventDefault()
+    setOpenModal(1)
+    Modal()
 
-    fetch("https://api-teen-kids-music-otby.vercel.app/api/candidates", {
+    fetch("http://localhost:3334/api/riodasostras", {
       method: "post",
       headers: {
         Accept: "application/json",
@@ -26,58 +29,90 @@ export default function RioDasOstrasForm() {
       },
       body: JSON.stringify({ fullName, artisticName, tel, address, age }),
     }).then((response) => {
-      /* setOpenModal(response.ok) */
+      console.log(response.ok)
     })
   }
   return (
     <div className="box-form">
-      <div className="title-section">EDIÇÃO Rio das Ostras</div>
+      <div className="title-section">EDIÇÃO TRÊS RIOS</div>
+      {openModal === 0 ? (
+        <form>
+          <input
+            type="text"
+            placeholder="NOME COMPLETO"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
+          />
 
-      <form>
-        <input
-          type="text"
-          placeholder="NOME COMPLETO"
-          value={fullName}
-          onChange={(e) => setFullName(e.target.value)}
-        />
+          <input
+            type="text"
+            placeholder="NOME ARTÍSTICO"
+            value={artisticName}
+            onChange={(e) => setArtisticName(e.target.value)}
+          />
+          <input
+            type="number"
+            placeholder="TELEFONE"
+            value={tel}
+            onChange={(e) => setTel(e.target.value)}
+          />
 
-        <input
-          type="text"
-          placeholder="NOME ARTÍSTICO"
-          value={artisticName}
-          onChange={(e) => setArtisticName(e.target.value)}
-        />
-        <input
-          type="number"
-          placeholder="TELEFONE"
-          value={tel}
-          onChange={(e) => setTel(e.target.value)}
-        />
+          <input
+            type="text"
+            placeholder="ENDEREÇO"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+          />
 
-        <input
-          type="text"
-          placeholder="ENDEREÇO"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-        />
+          <input
+            type="text"
+            placeholder="IDADE"
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
+          />
 
-        <input
-          type="text"
-          placeholder="IDADE"
-          value={age}
-          onChange={(e) => setAge(e.target.value)}
-        />
+          <div className="btn-form-action">
+            <button onClick={handleSubmit} className="register">
+              REALIZAR INSCRIÇÃO
+            </button>
+            <button onClick={cancelRegister} className="cancel">
+              CANCELAR
+            </button>
+            <button>
+              <Link to="/inscrição">Voltar</Link>
+            </button>
+          </div>
+        </form>
+      ) : (
+        <Modal fullName={fullName} />
+      )}
+    </div>
+  )
+}
 
-        <div className="btn-form-action">
-          <button onClick={handleSubmit} className="register">
-            REALIZAR INSCRIÇÃO
-          </button>
-          <button onClick={cancelRegister} className="cancel">
-            CANCELAR
-          </button>
-          <Link to="/inscrição">Voltar</Link>
-        </div>
-      </form>
+function Modal(props) {
+  const sendMsgWhatsapp = () => {
+    const phone = 5521996119461
+    const msgUser = `\n⚠️Olá, eu me chamo:⚠️\n
+  -${props.fullName}🎙️\n 
+  -Eu me inscrevi pelo site:\n 
+  -TEEN KIDS MUSIC FESTIVAL\n 
+  -E eu gostaria de realizar o pagamento da inscrição\n
+  -para a edição Rio das Ostras!\n
+  `
+
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(msgUser)}`
+    window.open(url, "_blank")
+  }
+  return (
+    <div className="containerLoading">
+      <p>
+        Olá: <strong>{props.fullName}</strong> <br />
+        Você está a um passo de concluir sua inscrição
+      </p>
+
+      <button onClick={sendMsgWhatsapp}>Realizar pagamento da inscrição</button>
+      <p>Valor R$50,00</p>
     </div>
   )
 }

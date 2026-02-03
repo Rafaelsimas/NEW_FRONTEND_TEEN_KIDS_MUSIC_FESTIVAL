@@ -1,4 +1,5 @@
 import "./style.css"
+import { Link } from "react-router-dom"
 import { useState } from "react"
 export default function Menu() {
   const [opencloseMenu, setOpenCloseMenu] = useState(0)
@@ -19,11 +20,13 @@ export default function Menu() {
           </a>
           <ul className="linkPageFlex">
             <li>HOME</li>
-            <li>NOSSA GALERIA</li>
-            <li>
+            <li onClick={VerGaleria}>NOSSA GALERIA</li>
+            <li onClick={VerBanda}>
               BANDA <span>2026</span>
             </li>
-            <li className="active">INSCREVA-SE</li>
+            <li className="active">
+              <Link to="/inscrição">INSCREVA-SE</Link>
+            </li>
           </ul>
         </nav>
       </header>
@@ -50,4 +53,11 @@ export default function Menu() {
       </ul>
     </>
   )
+}
+
+function VerGaleria() {
+  alert("Em breve você poderá visualizar nossa galeria!❤️")
+}
+function VerBanda() {
+  alert("⚠️Em breve você conhecerá a banda da edição 2026!⚠️")
 }

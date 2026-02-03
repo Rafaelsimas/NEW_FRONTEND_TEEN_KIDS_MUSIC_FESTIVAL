@@ -1,6 +1,6 @@
 /* =============================BANNER============================ */
 .box-banner {
-  padding-top: 250px;
+  padding-top: 150px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -92,6 +92,7 @@
 
 @media (max-width: 700px) {
   .banner {
+    padding-top: 95px;
     margin-bottom: 100px;
   }
   .box-banner {
@@ -125,6 +126,7 @@
   .banner .text p {
     font-size: 0.8rem;
     text-align: center;
+    display: none;
   }
 
   .box-banner .text .btn-box .btn-home-action {
