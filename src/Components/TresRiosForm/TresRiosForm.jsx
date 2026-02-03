@@ -1,7 +1,7 @@
 import "./style.css"
 import { Link } from "react-router-dom"
 import { useState } from "react"
-export default function TresRiosForm() {
+export default function RioDasOstrasForm() {
   const [fullName, setFullName] = useState("")
   const [artisticName, setArtisticName] = useState("")
   const [tel, setTel] = useState("")
@@ -18,23 +18,29 @@ export default function TresRiosForm() {
   }
   const handleSubmit = (e) => {
     e.preventDefault()
-    setOpenModal(1)
-    Modal()
 
-    fetch("https://api-teen-kids-music-otby.vercel.app/api/candidates", {
+    fetch("https://atl-api-teen-kids-music.vercel.app/api/candidatesTresRios", {
       method: "post",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ fullName, artisticName, tel, address, age }),
+      body: JSON.stringify({
+        fullName,
+        artisticName,
+        tel,
+        address,
+        age: Number(age),
+      }),
     }).then((response) => {
       console.log(response.ok)
+      setOpenModal(1)
+      Modal()
     })
   }
   return (
     <div className="box-form">
-      <div className="title-section">EDIÇÃO TRÊS RIOS</div>
+      <div className="title-section">EDIÇÃO Rio das Ostras</div>
       {openModal === 0 ? (
         <form>
           <input
@@ -65,7 +71,7 @@ export default function TresRiosForm() {
           />
 
           <input
-            type="text"
+            type="number"
             placeholder="IDADE"
             value={age}
             onChange={(e) => setAge(e.target.value)}
@@ -92,13 +98,14 @@ export default function TresRiosForm() {
 
 function Modal(props) {
   const sendMsgWhatsapp = () => {
-    const phone = 5522992168804
+    const phone = 5521996119461
     const msgUser = `\n⚠️Olá, eu me chamo:⚠️\n
   -${props.fullName}🎙️\n 
   -Eu me inscrevi pelo site:\n 
   -TEEN KIDS MUSIC FESTIVAL\n 
   -E eu gostaria de realizar o pagamento da inscrição\n
-  -para a edição TRÊS RIOS!\n
+  -para a edição Rio das Ostras!\n
+  -VALOR DA INSCRIÇÃO R$50,00\n
   `
 
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(msgUser)}`
@@ -112,7 +119,7 @@ function Modal(props) {
       </p>
 
       <button onClick={sendMsgWhatsapp}>
-        Click aqui para finalizar sua inscrição
+        Clique para finalizar sua inscrição!
       </button>
       <p>Valor R$50,00</p>
     </div>

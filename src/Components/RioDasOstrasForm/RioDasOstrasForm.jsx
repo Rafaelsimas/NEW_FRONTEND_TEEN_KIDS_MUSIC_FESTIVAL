@@ -18,18 +18,27 @@ export default function RioDasOstrasForm() {
   }
   const handleSubmit = (e) => {
     e.preventDefault()
-    setOpenModal(1)
-    Modal()
 
-    fetch("http://localhost:3334/api/riodasostras", {
-      method: "post",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
+    fetch(
+      "https://atl-api-teen-kids-music.vercel.app/api/candidatesRioDasOstras",
+      {
+        method: "post",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fullName,
+          artisticName,
+          tel,
+          address,
+          age: Number(age),
+        }),
       },
-      body: JSON.stringify({ fullName, artisticName, tel, address, age }),
-    }).then((response) => {
+    ).then((response) => {
       console.log(response.ok)
+      setOpenModal(1)
+      Modal()
     })
   }
   return (
@@ -65,7 +74,7 @@ export default function RioDasOstrasForm() {
           />
 
           <input
-            type="text"
+            type="number"
             placeholder="IDADE"
             value={age}
             onChange={(e) => setAge(e.target.value)}
@@ -92,7 +101,7 @@ export default function RioDasOstrasForm() {
 
 function Modal(props) {
   const sendMsgWhatsapp = () => {
-    const phone = 5522992168804
+    const phone = 5521996119461
     const msgUser = `\n⚠️Olá, eu me chamo:⚠️\n
   -${props.fullName}🎙️\n 
   -Eu me inscrevi pelo site:\n 
