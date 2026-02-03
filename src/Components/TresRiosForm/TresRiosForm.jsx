@@ -104,7 +104,7 @@ function Modal(props) {
   -Eu me inscrevi pelo site:\n 
   -TEEN KIDS MUSIC FESTIVAL\n 
   -E eu gostaria de realizar o pagamento da inscrição\n
-  -para a edição Rio das Ostras!\n
+  -para a edição Três Rios!\n
   -VALOR DA INSCRIÇÃO R$50,00\n
   `
 
