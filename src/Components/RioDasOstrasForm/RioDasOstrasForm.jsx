@@ -99,6 +99,7 @@ function Modal(props) {
   -TEEN KIDS MUSIC FESTIVAL\n 
   -E eu gostaria de realizar o pagamento da inscrição\n
   -para a edição Rio das Ostras!\n
+  -VALOR DA INSCRIÇÃO R$50,00\n
   `
 
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(msgUser)}`
