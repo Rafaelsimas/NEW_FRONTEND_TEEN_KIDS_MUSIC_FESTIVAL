@@ -1,5 +1,8 @@
 import "./style.css"
 export default function About() {
+  const cronogramaAlert = () => {
+    alert("⚠️CRONOGRAMA ESTARÁ DISPONÍVEL EM BREVE!⚠️")
+  }
   return (
     <section id="about">
       <div className="title-section">SOBRE NÓS</div>
@@ -46,7 +49,7 @@ export default function About() {
           <div className="text-conograma">CRONOGRAMA DE APRESENTAÇÕES</div>
           <div className="text-detail">CRONOGRAMA DE APRESENTAÇÕES</div>
         </div>
-        <button>Acompanhe o cronograma</button>
+        <button onClick={cronogramaAlert}>Acompanhe o cronograma</button>
       </div>
     </section>
   )

@@ -4,7 +4,7 @@ import champion2 from "../../assets/img/champion2.png"
 /* ================IMAGES CARD===================== */
 import arrow from "../../assets/icons/arrow.png"
 import star from "../../assets/icons/star.png"
-import Vector from "../../assets/icons/Vector.png"
+import Vector from "../../assets/icons/Vector (1).png"
 import "./style.css"
 export default function LastChampion() {
   return (

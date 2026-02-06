@@ -47,7 +47,7 @@
 
 @media (max-width: 700px) {
   #about {
-    /*   height: 100vh; */
+    /*     height: 226vh; */
     width: 90%;
     display: flex;
     flex-direction: column;

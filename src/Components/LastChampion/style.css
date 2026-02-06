@@ -17,6 +17,7 @@
   border-radius: 10px;
   padding: 1.5rem;
   color: var(--txt-color-card);
+  margin-bottom: 15px;
 }
 
 #lastChampion .title-section {
