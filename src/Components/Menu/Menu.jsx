@@ -44,11 +44,13 @@ export default function Menu() {
         }
       >
         <li>HOME</li>
-        <li>NOSSA GALERIA</li>
-        <li>
+        <li onClick={VerGaleria}>NOSSA GALERIA</li>
+        <li onClick={VerBanda}>
           BANDA <span>2026</span>
         </li>
-        <li>INSCREVA-SE</li>
+        <li className="active">
+          <Link to="/inscrição">INSCREVA-SE</Link>
+        </li>
         <li onClick={closeDrawer}>x</li>
       </ul>
     </>
