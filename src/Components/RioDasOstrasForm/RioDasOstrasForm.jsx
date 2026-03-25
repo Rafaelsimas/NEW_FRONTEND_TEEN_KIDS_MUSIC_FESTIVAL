@@ -1,6 +1,7 @@
 import "./style.css"
 import { Link } from "react-router-dom"
 import { useState } from "react"
+
 export default function RioDasOstrasForm() {
   const [fullName, setFullName] = useState("")
   const [artisticName, setArtisticName] = useState("")
@@ -8,6 +9,7 @@ export default function RioDasOstrasForm() {
   const [address, setAddress] = useState("")
   const [age, setAge] = useState("")
   const [openModal, setOpenModal] = useState(0)
+  const [message, setMessage] = useState("")
 
   const cancelRegister = () => {
     setFullName("")
@@ -15,37 +17,60 @@ export default function RioDasOstrasForm() {
     setTel("")
     setAddress("")
     setAge("")
+    setMessage("")
   }
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
-    fetch(
-      "https://atl-api-teen-kids-music.vercel.app/api/candidatesRioDasOstras",
-      {
-        method: "post",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
+    setMessage("")
+
+    try {
+      const response = await fetch(
+        "http://localhost:3335/api/candidatesRioDasOstras",
+        {
+          method: "post",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            fullName,
+            artisticName,
+            tel,
+            address,
+            age: Number(age),
+          }),
         },
-        body: JSON.stringify({
-          fullName,
-          artisticName,
-          tel,
-          address,
-          age: Number(age),
-        }),
-      },
-    ).then((response) => {
-      console.log(response.ok)
+      )
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        // ❌ usuário já cadastrado ou outro erro
+        setMessage(data.message)
+        return
+      }
+
+      // ✅ sucesso
       setOpenModal(1)
-      Modal()
-    })
+
+      setFullName("")
+      setArtisticName("")
+      setTel("")
+      setAddress("")
+      setAge("")
+    } catch (error) {
+      setMessage("Erro ao cadastrar usuário")
+    }
   }
+
   return (
     <div className="box-form">
       <div className="title-section">EDIÇÃO Rio das Ostras</div>
+
       {openModal === 0 ? (
-        <form>
+        <form onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="NOME COMPLETO"
@@ -59,8 +84,9 @@ export default function RioDasOstrasForm() {
             value={artisticName}
             onChange={(e) => setArtisticName(e.target.value)}
           />
+
           <input
-            type="number"
+            type="text"
             placeholder="TELEFONE"
             value={tel}
             onChange={(e) => setTel(e.target.value)}
@@ -80,14 +106,19 @@ export default function RioDasOstrasForm() {
             onChange={(e) => setAge(e.target.value)}
           />
 
+          {/* 🔥 MENSAGEM SIMPLES */}
+          {message && <div>{message}</div>}
+
           <div className="btn-form-action">
-            <button onClick={handleSubmit} className="register">
+            <button type="submit" className="register">
               REALIZAR INSCRIÇÃO
             </button>
-            <button onClick={cancelRegister} className="cancel">
+
+            <button type="button" onClick={cancelRegister} className="cancel">
               CANCELAR
             </button>
-            <button>
+
+            <button type="button">
               <Link to="/inscrição">Voltar</Link>
             </button>
           </div>
@@ -101,19 +132,21 @@ export default function RioDasOstrasForm() {
 
 function Modal(props) {
   const sendMsgWhatsapp = () => {
-    const phone = 5522992168804
+    const phone = 5521996119461
+
     const msgUser = `\n⚠️Olá, eu me chamo:⚠️\n
-  -${props.fullName}🎙️\n 
-  -Eu me inscrevi pelo site:\n 
-  -TEEN KIDS MUSIC FESTIVAL\n 
-  -E eu gostaria de realizar o pagamento da inscrição\n
-  -para a edição Rio das Ostras!\n
-  -VALOR DA INSCRIÇÃO R$50,00\n
-  `
+- ${props.fullName} 🎙️\n 
+- Eu me inscrevi pelo site:\n 
+- TEEN KIDS MUSIC FESTIVAL\n 
+- E eu gostaria de realizar o pagamento da inscrição\n
+- para a edição Rio das Ostras!\n
+- VALOR DA INSCRIÇÃO R$50,00\n
+`
 
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(msgUser)}`
     window.open(url, "_blank")
   }
+
   return (
     <div className="containerLoading">
       <p>
@@ -124,6 +157,7 @@ function Modal(props) {
       <button onClick={sendMsgWhatsapp}>
         Clique para finalizar sua inscrição!
       </button>
+
       <p>Valor R$50,00</p>
     </div>
   )
