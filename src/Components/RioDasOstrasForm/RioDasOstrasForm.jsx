@@ -26,23 +26,20 @@ export default function RioDasOstrasForm() {
     setMessage("")
 
     try {
-      const response = await fetch(
-        "http://localhost:3335/api/candidatesRioDasOstras",
-        {
-          method: "post",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            fullName,
-            artisticName,
-            tel,
-            address,
-            age: Number(age),
-          }),
+      const response = await fetch("https://danger-api.onrender.com/api", {
+        method: "post",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
-      )
+        body: JSON.stringify({
+          fullName,
+          artisticName,
+          tel,
+          address,
+          age: Number(age),
+        }),
+      })
 
       const data = await response.json()
 
