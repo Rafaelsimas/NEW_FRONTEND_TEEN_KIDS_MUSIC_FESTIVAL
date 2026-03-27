@@ -3,7 +3,8 @@ import { Link } from "react-router-dom"
 import { useState } from "react"
 
 export default function RioDasOstrasForm() {
-  const [fullName, setFullName] = useState("")
+  // Ajustado para 'name' para bater com a API
+  const [name, setName] = useState("")
   const [artisticName, setArtisticName] = useState("")
   const [tel, setTel] = useState("")
   const [address, setAddress] = useState("")
@@ -12,7 +13,7 @@ export default function RioDasOstrasForm() {
   const [message, setMessage] = useState("")
 
   const cancelRegister = () => {
-    setFullName("")
+    setName("")
     setArtisticName("")
     setTel("")
     setAddress("")
@@ -22,43 +23,47 @@ export default function RioDasOstrasForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
     setMessage("")
 
     try {
-      const response = await fetch("https://danger-api.onrender.com/api", {
-        method: "post",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
+      const response = await fetch(
+        "https://new-register-api-festival-teen.vercel.app/api/candidates/register",
+        {
+          method: "POST", // Boa prática usar maiúsculo
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name, // Agora a chave bate com a API
+            artisticName,
+            tel,
+            address,
+            age: Number(age),
+          }),
         },
-        body: JSON.stringify({
-          fullName,
-          artisticName,
-          tel,
-          address,
-          age: Number(age),
-        }),
-      })
+      )
 
       const data = await response.json()
 
       if (!response.ok) {
-        // ❌ usuário já cadastrado ou outro erro
-        setMessage(data.message)
+        // Exibe a mensagem de erro vinda da API (ex: "Telefone já cadastrado")
+        setMessage(data.message || "Erro ao realizar inscrição")
         return
       }
 
-      // ✅ sucesso
+      // ✅ SUCESSO
       setOpenModal(1)
 
-      setFullName("")
+      // Limpamos os campos auxiliares, mas o 'name' será limpo apenas se
+      // você não precisar mais dele no Modal.
+      // Dica: Limpe apenas os outros para o Modal conseguir ler o props.name
       setArtisticName("")
       setTel("")
       setAddress("")
       setAge("")
     } catch (error) {
-      setMessage("Erro ao cadastrar usuário")
+      setMessage("Erro de conexão com o servidor")
     }
   }
 
@@ -71,13 +76,15 @@ export default function RioDasOstrasForm() {
           <input
             type="text"
             placeholder="NOME COMPLETO"
-            value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
+            required
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
 
           <input
             type="text"
             placeholder="NOME ARTÍSTICO"
+            required
             value={artisticName}
             onChange={(e) => setArtisticName(e.target.value)}
           />
@@ -85,6 +92,7 @@ export default function RioDasOstrasForm() {
           <input
             type="text"
             placeholder="TELEFONE"
+            required
             value={tel}
             onChange={(e) => setTel(e.target.value)}
           />
@@ -92,6 +100,7 @@ export default function RioDasOstrasForm() {
           <input
             type="text"
             placeholder="ENDEREÇO"
+            required
             value={address}
             onChange={(e) => setAddress(e.target.value)}
           />
@@ -99,12 +108,19 @@ export default function RioDasOstrasForm() {
           <input
             type="number"
             placeholder="IDADE"
+            required
             value={age}
             onChange={(e) => setAge(e.target.value)}
           />
 
-          {/* 🔥 MENSAGEM SIMPLES */}
-          {message && <div>{message}</div>}
+          {message && (
+            <div
+              className="error-message"
+              style={{ color: "red", marginBottom: "10px" }}
+            >
+              {message}
+            </div>
+          )}
 
           <div className="btn-form-action">
             <button type="submit" className="register">
@@ -121,7 +137,7 @@ export default function RioDasOstrasForm() {
           </div>
         </form>
       ) : (
-        <Modal fullName={fullName} />
+        <Modal name={name} />
       )}
     </div>
   )
@@ -130,16 +146,15 @@ export default function RioDasOstrasForm() {
 function Modal(props) {
   const sendMsgWhatsapp = () => {
     const phone = 5522992168804
-
-    const msgUser = `\n⚠️Olá, eu me chamo:⚠️\n
-- ${props.fullName} 🎙️\n 
-- Eu me inscrevi pelo site:\n 
-- TEEN KIDS MUSIC FESTIVAL\n 
-- E eu gostaria de realizar o pagamento da inscrição\n
-- para a edição Rio das Ostras!\n
-- VALOR DA INSCRIÇÃO R$50,00\n
+    const msgUser = `
+⚠️ Olá, eu me chamo: ⚠️
+- ${props.name} 🎙️
+- Eu me inscrevi pelo site:
+- TEEN KIDS MUSIC FESTIVAL
+- E eu gostaria de realizar o pagamento da inscrição
+- para a edição Rio das Ostras!
+- VALOR DA INSCRIÇÃO R$50,00
 `
-
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(msgUser)}`
     window.open(url, "_blank")
   }
@@ -147,11 +162,11 @@ function Modal(props) {
   return (
     <div className="containerLoading">
       <p>
-        Olá: <strong>{props.fullName}</strong> <br />
-        Você está a um passo de concluir sua inscrição
+        Olá: <strong>{props.name}</strong> <br />
+        Você está a um passo de concluir sua inscrição!
       </p>
 
-      <button onClick={sendMsgWhatsapp}>
+      <button onClick={sendMsgWhatsapp} className="btn-whatsapp">
         Clique para finalizar sua inscrição!
       </button>
 
