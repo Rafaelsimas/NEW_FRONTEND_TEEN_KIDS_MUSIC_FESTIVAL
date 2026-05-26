@@ -33,6 +33,10 @@ html {
   scroll-behavior: smooth;
 }
 
+#red-msg {
+  color: red;
+}
+
 .title-section {
   font-size: 3rem;
   color: var(--xl-txt-color);

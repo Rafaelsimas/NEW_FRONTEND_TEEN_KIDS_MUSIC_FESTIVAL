@@ -16,11 +16,11 @@ export default function Dashboard() {
       </div>
 
       <ul className="options-festival">
-        <Link to="/riodasostras">
+        <Link to="/">
           <li>
             <div className="title-festival"> EDIÇÃO RIO DAS OSTRAS</div>
             <div className="date">
-              Início: <strong>EM BREVE</strong>
+              Início: <strong id="red-msg">Incrições Encerradas</strong>
             </div>
           </li>
         </Link>
